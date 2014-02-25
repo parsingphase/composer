@@ -322,6 +322,7 @@ EOF;
         $includePaths = array();
 
         foreach ($packageMap as $item) {
+            /* @var PackageInterface $package */
             list($package, $installPath) = $item;
 
             if (null !== $package->getTargetDir() && strlen($package->getTargetDir()) > 0) {
@@ -568,6 +569,7 @@ FOOTER;
         foreach ($packageMap as $item) {
             list($package, $installPath) = $item;
 
+            /* @var PackageInterface $package */
             $autoload = $package->getAutoload();
 
             // skip misconfigured packages
@@ -630,11 +632,13 @@ FOOTER;
 
         foreach ($packageMap as $item) {
             list($package, $path) = $item;
+            /* @var PackageInterface $package */
             $name = $package->getName();
             $packages[$name] = $package;
             $paths[$name] = $path;
 
             foreach (array_merge($package->getRequires(), $package->getDevRequires()) as $link) {
+                /* @var \Composer\Package\Link $link */
                 $target = $link->getTarget();
                 $usageList[$target][] = $name;
             }

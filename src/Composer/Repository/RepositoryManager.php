@@ -15,6 +15,7 @@ namespace Composer\Repository;
 use Composer\IO\IOInterface;
 use Composer\Config;
 use Composer\EventDispatcher\EventDispatcher;
+use Composer\Package\PackageInterface;
 
 /**
  * Repositories manager.
@@ -26,6 +27,9 @@ use Composer\EventDispatcher\EventDispatcher;
 class RepositoryManager
 {
     private $localRepository;
+    /**
+     * @var RepositoryInterface[]
+     */
     private $repositories = array();
     private $repositoryClasses = array();
     private $io;
